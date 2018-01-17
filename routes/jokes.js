@@ -10,7 +10,9 @@ router.get('/best', function(req, res) {
     for (const prop in obj) {
       jokes.push(obj[prop]);
     }
-    jokes.sort((a, b) => a.upVotes < b.upVotes);
+    jokes.sort((a, b) => (
+      (a.upVotes || 0) < (b.upVotes || 0)
+    ));
 
     res.status(200).json(jokes.slice(0, 5));
   });
@@ -22,7 +24,9 @@ router.get('/worst', function(req, res) {
     for (const prop in obj) {
       jokes.push(obj[prop]);
     }
-    jokes.sort((a, b) => a.downVotes < b.downVotes);
+    jokes.sort((a, b) => (
+      (a.upVotes || 0) > (b.upVotes || 0)
+    ));
 
     res.status(200).json(jokes.slice(0, 5));
   });
