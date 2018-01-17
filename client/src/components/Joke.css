@@ -1,0 +1,7 @@
+.joke {
+  border: 1px solid;
+  overflow: hidden;
+  display: inline-block;
+  height: 150px;
+  width: 120px;
+}
